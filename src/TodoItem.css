@@ -1,0 +1,33 @@
+.todo-item{
+    padding: 0.5rem;
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: var(--text-weigth);
+    color: var(--text-color);
+    /* height: 9%; */
+}
+
+/* .todo-item p{
+    text-align: start;
+} */
+
+.button-check{
+    background-color: transparent;
+    width:2rem;
+    height:2rem;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+}
+
+/* .button-check:active{
+    background-image: url(icon-check.svg);
+    background-repeat: no-repeat;
+} */
+
+.button-delete{
+    border: none;
+    background-color: transparent;
+}
