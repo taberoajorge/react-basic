@@ -30,16 +30,14 @@ function App() {
   return (
     <React.Fragment>
       <h2 className="header-title" > TODO </h2>
-      <TodoSearch>
-        {/* <CreateTodoButton /> */}
-      </TodoSearch>
+      <TodoSearch />
       <TodoList todoC={<TodoCounter />} >
         {todos.map((todo) => (
           <TodoItem key={todo.text} text={todo.text} />
         ))}
       </TodoList>
       
-
+    <CreateTodoButton />
     </React.Fragment>
   );
 }

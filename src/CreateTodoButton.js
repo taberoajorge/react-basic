@@ -2,7 +2,11 @@ import React from "react";
 import "./CreateTodoButton.css";
 
 function CreateTodoButton() {
-  return <input className="create-todo" type="text" />;
+  return (
+    <div className="button-container">
+      <button className="create-todo" type="text">+</button>
+    </div>
+  );
 }
 
 export { CreateTodoButton };

@@ -1,9 +1,16 @@
-.create-todo{
+.button-container{
     width: 100%;
-    background-color: var(--todo-color);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-todo{
+    width: 6rem;
+    position: absolute;
+    background-color: var(--button-color);
     border: none;
-    height: 4rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    margin-bottom: 5rem;
+    top: 53rem;
+    right: 1rem;
+    padding: 2rem;
+    border-radius: 100%;
 }
