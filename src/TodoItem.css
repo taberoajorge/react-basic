@@ -1,33 +1,58 @@
-.todo-item{
-    padding: 0.5rem;
-    display: flex;
-    border-bottom: 1px solid var(--border-color);
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.8rem;
-    font-weight: var(--text-weigth);
-    color: var(--text-color);
-    /* height: 9%; */
+.todo-item {
+  padding: 1rem;
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: var(--text-weigth);
+  color: var(--text-color);
 }
 
-/* .todo-item p{
-    text-align: start;
-} */
-
-.button-check{
-    background-color: transparent;
-    width:2rem;
-    height:2rem;
-    border-radius: 50%;
-    border: 1px solid var(--border-color);
+#checkbox[type="checkbox"] {
+  display: none;
 }
 
-/* .button-check:active{
-    background-image: url(icon-check.svg);
-    background-repeat: no-repeat;
-} */
+#label {
+  position: relative;
+  margin-left: 3rem;
+}
 
-.button-delete{
-    border: none;
-    background-color: transparent;
+#label::before {
+  content: ".";
+  background-image: url("./icon-check.svg");
+  background-position: center;
+  background-size: contain;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  left: -3rem;
+  transform: scale(0) rotateZ(180deg);
+  transition: all 0.4s cubic-bezier(0.54, 0.01, 0, 1.49);
+}
+
+#checkbox[type="checkbox"]:checked + #label::before {
+  transform: scale(1) rotateZ(0deg);
+  background-color: var(--check);
+  border-radius: 50%;
+}
+
+#checkbox[type="checkbox"]:checked + #label {
+    text-decoration: line-through;
+}
+
+#label::after {
+  content: "";
+  border: 0.2rem solid var(--border-color);
+  width:  2rem;
+  height: 2rem;
+  position: absolute;
+  border-radius: 50%;
+  left: -3.2rem;
+  top: -0.2rem;
+}
+
+.button-delete {
+  border: none;
+  background-color: transparent;
 }

@@ -1,6 +1,6 @@
 .section{
     list-style: none;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     border-radius: 0.5rem;
     background-color: var(--todo-color);
     height: 60vh;

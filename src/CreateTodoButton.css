@@ -1,16 +1,16 @@
 .button-container{
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .create-todo{
     width: 6rem;
-    position: absolute;
+    position: sticky;
     background-color: var(--button-color);
     border: none;
-    top: 53rem;
-    right: 1rem;
+    margin-top: 3rem;
+    /* margin-right: -1rem; */
     padding: 2rem;
     border-radius: 100%;
 }

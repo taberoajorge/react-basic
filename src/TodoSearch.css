@@ -6,4 +6,14 @@
     padding: 1rem;
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-size: 1.8rem;
+}
+
+.search-bar::placeholder{
+    color: var(--border-color);
+}
+
+.search-bar:focus-visible{
+    outline: none;
 }
