@@ -17,7 +17,7 @@ function TodoItem({ text, completed, onComplete,onDelete}) {
         id="label"
         for="checkbox"
       >
-        <div className={` ${completed && "check"} `}></div>
+        <div className={` ${completed && "aver"} `}></div>
 
         {text}
       </label>

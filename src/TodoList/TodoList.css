@@ -3,8 +3,12 @@
     border-radius: 0.5rem;
     background-color: var(--todo-color);
     height: 60vh;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+}
+.todo-container{
+    overflow: scroll;
+    scroll-behavior: smooth;
 }

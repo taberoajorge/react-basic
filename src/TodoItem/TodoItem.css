@@ -18,6 +18,19 @@
   margin-left: 3rem;
 }
 
+.checkbox-label::before {
+  content: ".";
+  background-image: url("./icon-check.svg");
+  background-position: center;
+  background-size: contain;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  left: -3rem;
+  transform: scale(0) rotateZ(180deg);
+  transition: all 0.4s cubic-bezier(0.54, 0.01, 0, 1.49);
+}
+
 .checked {
   text-decoration: line-through;
 }
@@ -26,8 +39,8 @@
   visibility: hidden;
 }
 
-.check {
-  
+.aver {
+  background-color: var(--check);
   border-radius: 50%;
   background-image: url("./icon-check.svg");
   background-position: center;
@@ -36,9 +49,6 @@
   height: 2rem;
   left: -3rem;
   position: absolute;
-  transform: scale(1) rotateZ(0deg);
-  background-color: var(--check);
-  border-radius: 50%;
 }
 
 .checkbox-label::after {
