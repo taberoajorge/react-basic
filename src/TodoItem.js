@@ -1,38 +1,28 @@
 import React from "react";
 import "./TodoItem.css";
 
-function TodoItem(props) {
-  const onComplete = () => {
-    alert(`Ya completaste la tarea: ${props.text}`);
-  };
-  const onDelete = () => {
-    alert(`Borraste la tarea: ${props.text}`);
-  };
+function TodoItem({ text, completed, onComplete,onDelete}) {
 
   return (
     <li className="todo-item">
       <input
-        className={`input-checkbox ${props.completed}`}
+        className={`input-checkbox ${completed}`}
         type="checkbox"
         id="checkbox"
       />
 
       <label
-        className={`checkbox-label  ${props.completed && "checked"}`}
+        className={`checkbox-label  ${completed && "checked"}`}
         onClick={onComplete}
         id="label"
         for="checkbox"
       >
-        <div className={` ${props.completed && "aver"} `}></div>
+        <div className={` ${completed && "check"} `}></div>
 
-        {props.text}
+        {text}
       </label>
 
-      <button 
-      
-      onClick={onDelete}
-
-      className="button-delete">
+      <button onClick={onDelete} className="button-delete">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
           <path
             fill="#494C6B"
