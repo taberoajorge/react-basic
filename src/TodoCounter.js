@@ -1,9 +1,11 @@
 import React from "react";
 import "./TodoCounter.css";
 
-function TodoCounter(props) {
+function TodoCounter({ total, completedTodos }) {
   return (
-    <p>5 items left</p>
+    <p>
+      {completedTodos} items left of {total} items
+    </p>
   );
 }
 
