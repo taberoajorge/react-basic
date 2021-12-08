@@ -1,5 +1,5 @@
 import React from "react";
-import "./CreateTodoButton.css";
+import { CreateTodoButtonUI } from "./CreateTodoButtonUI";
 
 function CreateTodoButton() {
 
@@ -8,11 +8,8 @@ function CreateTodoButton() {
   }
 
   return (
-    <div className="button-container">
-      <button className="create-todo" onClick={() => onClickButton('Mensaje')}>
-        +
-      </button>
-    </div>
+    <CreateTodoButtonUI 
+    onClickButton={onClickButton}/>
   );
 }
 

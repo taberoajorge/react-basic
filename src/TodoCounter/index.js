@@ -1,11 +1,17 @@
 import React from "react";
-import "./TodoCounter.css";
+import styled from "styled-components";
+
+const StyledTodoCounter = styled.p`
+    text-align: center;
+    font-size: 1.8rem;
+    color: aliceblue;
+    padding: 1rem;`
 
 function TodoCounter({ total, completedTodos }) {
   return (
-    <p>
+    <StyledTodoCounter>
       {completedTodos} items left of {total} items
-    </p>
+    </StyledTodoCounter>
   );
 }
 
