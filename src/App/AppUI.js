@@ -4,6 +4,13 @@ import { TodoSearch } from "../TodoSearch";
 import { CreateTodoButton } from "../CreateTodoButton";
 import { TodoList } from "../TodoList";
 import { TodoItem } from "../TodoItem";
+import styled from "styled-components";
+import { GlobalStyle } from "../GlobalStyle";
+
+const StyleTitle = styled.h2`
+  color: #fff;
+  font-size: 3rem;
+`;
 
 function AppUI({
   totalTodos,
@@ -16,7 +23,8 @@ function AppUI({
 }) {
   return (
     <React.Fragment>
-      <h2 className="header-title"> TODO </h2>
+      <GlobalStyle />
+      <StyleTitle className="header-title"> TODO </StyleTitle>
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList
         todoC={
