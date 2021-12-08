@@ -1,5 +1,5 @@
 import React from "react";
-import "./TodoSearch.css";
+import { TodoSearchUI } from "./TodoSearchUI";
 
 function TodoSearch({ searchValue, setSearchValue }) {
   const onSearchValueChange = (event) => {
@@ -8,14 +8,10 @@ function TodoSearch({ searchValue, setSearchValue }) {
   };
 
   return (
-    <React.Fragment>
-      <input
-        onChange={onSearchValueChange}
-        className="search-bar"
-        placeholder="Encuentra tu tarea"
-        value={searchValue}
-      />
-    </React.Fragment>
+    <TodoSearchUI
+      searchValue={searchValue}
+      onSearchValueChange={onSearchValueChange}
+    />
   );
 }
 

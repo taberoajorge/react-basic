@@ -1,14 +1,9 @@
 import React from "react";
-import "./TodoList.css";
+import { TodoListUI } from "./TodoListUI";
 
 function TodoList(props) {
   return (
-    <section className="section">
-      <ul className="todo-container">{props.children}</ul>
-      <div>
-      {props.todoC}
-      </div>
-    </section>
+    <TodoListUI counter={props.todoC} todoItem={props.children} />
   );
 }
 export { TodoList };

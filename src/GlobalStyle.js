@@ -24,15 +24,9 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     background-color: var(--main-color);
-  }
-  
-  main {
-    padding: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vw;
-    position: absolute;
- 
-}`;
+     }
+`;
