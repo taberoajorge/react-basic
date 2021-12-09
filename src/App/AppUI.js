@@ -1,4 +1,5 @@
 import React from "react";
+import { TodoContext } from "../TodoContext";
 import { TodoCounter } from "../TodoCounter";
 import { TodoSearch } from "../TodoSearch";
 import { CreateTodoButton } from "../CreateTodoButton";
@@ -12,30 +13,20 @@ const StyleTitle = styled.h2`
   font-size: 3rem;
 `;
 
-function AppUI({
-  loading,
-  error,
-  totalTodos,
-  completedTodos,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  completeTodo,
-  deleteTodo,
-}) {
+function AppUI() {
+  const { error, loading, searchedTodos, completeTodo, deleteTodo } =
+    React.useContext(TodoContext);
   return (
     <React.Fragment>
       <GlobalStyle />
       <StyleTitle className="header-title"> TODO </StyleTitle>
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-      <TodoList
-        todoC={
-          <TodoCounter total={totalTodos} completedTodos={completedTodos} />
-        }
-      >
+      <TodoSearch />
+      <TodoList todoC={<TodoCounter />}>
         {error && <StyleTitle>Error</StyleTitle>}
-      {loading && <StyleTitle>Se esta cargando</StyleTitle>}
-      {(!loading && !searchedTodos.length) && <StyleTitle> Crea tu primer todo</StyleTitle>}
+        {loading && <StyleTitle>Se esta cargando</StyleTitle>}
+        {!loading && !searchedTodos.length && (
+          <StyleTitle> Crea tu primer todo</StyleTitle>
+        )}
         {searchedTodos.map((todo) => (
           <TodoItem
             key={todo.text}
@@ -46,9 +37,6 @@ function AppUI({
           />
         ))}
       </TodoList>
-      
-      
-
       <CreateTodoButton />
     </React.Fragment>
   );
