@@ -13,6 +13,8 @@ const StyleTitle = styled.h2`
 `;
 
 function AppUI({
+  loading,
+  error,
   totalTodos,
   completedTodos,
   searchValue,
@@ -31,6 +33,9 @@ function AppUI({
           <TodoCounter total={totalTodos} completedTodos={completedTodos} />
         }
       >
+        {error && <StyleTitle>Error</StyleTitle>}
+      {loading && <StyleTitle>Se esta cargando</StyleTitle>}
+      {(!loading && !searchedTodos.length) && <StyleTitle> Crea tu primer todo</StyleTitle>}
         {searchedTodos.map((todo) => (
           <TodoItem
             key={todo.text}
@@ -41,6 +46,8 @@ function AppUI({
           />
         ))}
       </TodoList>
+      
+      
 
       <CreateTodoButton />
     </React.Fragment>
