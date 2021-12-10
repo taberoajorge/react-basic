@@ -14,6 +14,10 @@ const StyledSection = styled.section`
 const StyledUl = styled.ul`
   overflow: scroll;
   scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.1rem;
+  }
 `;
 
 export function TodoListUI({todoItem, counter}) {

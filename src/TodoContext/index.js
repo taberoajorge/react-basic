@@ -44,7 +44,8 @@ function TodoProvider(props) {
   };
 
   const createTodo = (text) => {
-    const newTodo = {text: text, completed: false};
+    console.log(text);
+    const newTodo = [{text: text, completed: false}];
     const  newTodos = [...todos, ...newTodo];
     saveTodos(newTodos);
     setOpenModal(prevState=> !prevState)

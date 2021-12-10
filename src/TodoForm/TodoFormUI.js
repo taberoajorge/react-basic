@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledForm = styled.form`
-  width: 100%;
+  width: 30rem;
   background-color: var(--todo-color);
   border: none;
   height: 13rem;
@@ -42,17 +42,25 @@ const StyledButton = styled.button`
   background-color: var(--border-color);
 `;
 
+
+
 function TodoFormUI({ onClickButton, createTodo }) {
+  const onCreateTodo = (event) => {
+    // console.log(event.currentTarget.elements.todo.value);
+    event.preventDefault()
+    createTodo(event.currentTarget.elements.todo.value)
+  };
+
   return (
-    <StyledForm>
-      <StyledLabel for="todo">
+    <StyledForm onSubmit={onCreateTodo}>
+      <StyledLabel  for="todo">
         <span>Escribe una nueva tarea</span>
         <StyledInput
           placeholder="Crea una nueva tarea!"
           type="text"
           id="todo"
         />
-        <StyledButton onClick={() => createTodo()} type="submit">Crear</StyledButton>
+        <StyledButton type="submit" >Crear</StyledButton>
         <StyledButton onClick={() => onClickButton()} type="button">
           Cancelar
         </StyledButton>
