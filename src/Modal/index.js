@@ -19,7 +19,7 @@ const StyledModal = styled.div`
 function Modal({ children }) {
   return ReactDOM.createPortal(
       <StyledModal>
-          {children}
+        {children}
       </StyledModal>, 
       document.getElementById("modal")
 );}

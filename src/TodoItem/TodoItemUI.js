@@ -35,6 +35,7 @@ const StyledDeleteButton = styled.button`
 const StyledCheckBox = styled.div`
   display: flex;
   & > p {
+    margin-left: 1rem;
     text-decoration: ${(props) => (props.completed ? "line-through" : "")};
   }
 `;

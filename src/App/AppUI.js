@@ -16,12 +16,12 @@ const StyleTitle = styled.h2`
 `;
 
 function AppUI() {
-  const { error, loading, searchedTodos, completeTodo, deleteTodo, openModal, setOpenModal} =
+  const { error, loading, searchedTodos, completeTodo, deleteTodo, openModal} =
     React.useContext(TodoContext);
   return (
     <React.Fragment>
       <GlobalStyle />
-      <StyleTitle className="header-title"> TODO </StyleTitle>
+      <StyleTitle > TODO </StyleTitle>
       <TodoSearch />
       <TodoList todoC={<TodoCounter />}>
         {error && <StyleTitle>Error</StyleTitle>}

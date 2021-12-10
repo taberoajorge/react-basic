@@ -5,7 +5,6 @@ const StyledButton = style.div`
 width: 100%;
 display: flex;
 justify-content: center;
-
 & > button {
     width: 6rem;
     position: sticky;
@@ -14,7 +13,6 @@ justify-content: center;
     margin-top: 3rem;
     padding: 2rem;
     border-radius: 100%;
-    z-index: 1;
 }
 `;
 
