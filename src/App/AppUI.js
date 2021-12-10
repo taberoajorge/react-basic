@@ -7,6 +7,8 @@ import { TodoList } from "../TodoList";
 import { TodoItem } from "../TodoItem";
 import styled from "styled-components";
 import { GlobalStyle } from "../GlobalStyle";
+import { Modal } from "../Modal";
+import { TodoForm } from "../TodoForm/index";
 
 const StyleTitle = styled.h2`
   color: #fff;
@@ -14,7 +16,7 @@ const StyleTitle = styled.h2`
 `;
 
 function AppUI() {
-  const { error, loading, searchedTodos, completeTodo, deleteTodo } =
+  const { error, loading, searchedTodos, completeTodo, deleteTodo, openModal, setOpenModal} =
     React.useContext(TodoContext);
   return (
     <React.Fragment>
@@ -37,6 +39,13 @@ function AppUI() {
           />
         ))}
       </TodoList>
+
+{!!openModal && (
+<Modal>
+  <TodoForm/>
+</Modal>
+)}
+
       <CreateTodoButton />
     </React.Fragment>
   );

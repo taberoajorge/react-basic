@@ -1,10 +1,12 @@
 import React from "react";
 import { CreateTodoButtonUI } from "./CreateTodoButtonUI";
+import { TodoContext } from "../TodoContext";
+
 
 function CreateTodoButton() {
-
-  const onClickButton = (msg) => {
-    alert(`Proximo modal de creacion: ${msg}`)
+  const {setOpenModal} = React.useContext(TodoContext);
+  const onClickButton = () => {
+   setOpenModal(prevState=> !prevState)
   }
 
   return (

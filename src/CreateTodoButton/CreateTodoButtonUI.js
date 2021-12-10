@@ -5,24 +5,23 @@ const StyledButton = style.div`
 width: 100%;
 display: flex;
 justify-content: center;
-// background-color: transparent;
+
 & > button {
     width: 6rem;
     position: sticky;
     background-color: var(--button-color);
     border: none;
     margin-top: 3rem;
-    /* margin-right: -1rem; */
     padding: 2rem;
     border-radius: 100%;
-  
+    z-index: 1;
 }
 `;
 
-export function CreateTodoButtonUI({ onClickButton }) {
+export function CreateTodoButtonUI(props) {
   return (
     <StyledButton>
-      <button onClick={() => onClickButton("Mensaje")}>+</button>
+      <button onClick={()=>props.onClickButton()}>+</button>
     </StyledButton>
   );
 }
