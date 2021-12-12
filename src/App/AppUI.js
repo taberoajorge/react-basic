@@ -9,6 +9,8 @@ import styled from "styled-components";
 import { GlobalStyle } from "../GlobalStyle";
 import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm/index";
+import {TodoLoadingError} from "../TodoLoadingError/index"
+import {TodoLoading} from "../TodoLoading/index"
 
 const StyleTitle = styled.h2`
   color: #fff;
@@ -16,7 +18,7 @@ const StyleTitle = styled.h2`
 `;
 
 function AppUI() {
-  const { error, loading, searchedTodos, completeTodo, deleteTodo, openModal} =
+  const { error, loading, searchedTodos, completeTodo, deleteTodo, openModal, itemsToLoad} =
     React.useContext(TodoContext);
   return (
     <React.Fragment>
@@ -24,8 +26,11 @@ function AppUI() {
       <StyleTitle > TODO </StyleTitle>
       <TodoSearch />
       <TodoList todoC={<TodoCounter />}>
-        {error && <StyleTitle>Error</StyleTitle>}
-        {loading && <StyleTitle>Se esta cargando</StyleTitle>}
+        
+        {error && <TodoLoadingError />}
+        
+        {loading && <TodoLoading itemsToLoad={itemsToLoad} />}
+        
         {!loading && !searchedTodos.length && (
           <StyleTitle> Crea tu primer todo</StyleTitle>
         )}
