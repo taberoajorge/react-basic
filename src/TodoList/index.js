@@ -3,7 +3,9 @@ import { TodoListUI } from "./TodoListUI";
 
 function TodoList(props) {
   return (
-    <TodoListUI counter={props.todoC} todoItem={props.children} />
+    <TodoListUI> 
+      {props.children}
+    </TodoListUI>
   );
 }
 export { TodoList };

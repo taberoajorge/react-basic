@@ -1,8 +1,7 @@
 import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
-const TodoContext = React.createContext();
 
-function TodoProvider(props) {
+function useTodos() {
   const {
     item: todos,
     saveItem: saveTodos,
@@ -25,7 +24,6 @@ function TodoProvider(props) {
       return todoText.includes(searchText);
     });
   }
-
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
@@ -36,51 +34,40 @@ function TodoProvider(props) {
     }
     saveTodos(newTodos);
   };
-
   const deleteTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   };
-
   const createTodo = (text) => {
     console.log(text);
-    const newTodo = [{text: text, completed: false}];
-    const  newTodos = [...todos, ...newTodo];
+    const newTodo = [{ text: text, completed: false }];
+    const newTodos = [...todos, ...newTodo];
     saveTodos(newTodos);
-    setOpenModal(prevState=> !prevState)
+    setOpenModal((prevState) => !prevState);
+  };
+  const onClickButton = () => {
+    setOpenModal((prevState) => !prevState);
   };
 
-
-  const onClickButton = () => {
-    setOpenModal(prevState=> !prevState)
-   }
-
-  return (
-    <TodoContext.Provider
-      value={{
-        loading,
-        error,
-        totalTodos,
-        completedTodos,
-        searchValue,
-        setSearchValue,
-        searchedTodos,
-        completeTodo,
-        deleteTodo,
-        openModal,
-        setOpenModal, 
-        onClickButton,
-        createTodo,
-        itemsToLoad
-      }}
-    >
-      {props.children}
-    </TodoContext.Provider>
-  );
+  return {
+    loading,
+    error,
+    totalTodos,
+    completedTodos,
+    searchValue,
+    setSearchValue,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+    onClickButton,
+    createTodo,
+    itemsToLoad,
+  };
 }
 
-<TodoContext.Consumer></TodoContext.Consumer>;
 
-export {TodoContext, TodoProvider};
+export { useTodos };

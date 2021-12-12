@@ -46,7 +46,6 @@ const StyledButton = styled.button`
 
 function TodoFormUI({ onClickButton, createTodo }) {
   const onCreateTodo = (event) => {
-    // console.log(event.currentTarget.elements.todo.value);
     event.preventDefault()
     createTodo(event.currentTarget.elements.todo.value)
   };
@@ -60,10 +59,11 @@ function TodoFormUI({ onClickButton, createTodo }) {
           type="text"
           id="todo"
         />
-        <StyledButton type="submit" >Crear</StyledButton>
+        
         <StyledButton onClick={() => onClickButton()} type="button">
           Cancelar
         </StyledButton>
+        <StyledButton type="submit" >Crear</StyledButton>
       </StyledLabel>
     </StyledForm>
   );

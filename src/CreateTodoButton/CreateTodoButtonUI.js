@@ -16,10 +16,10 @@ justify-content: center;
 }
 `;
 
-export function CreateTodoButtonUI(props) {
+export function CreateTodoButtonUI({onClickButton}) {
   return (
     <StyledButton>
-      <button onClick={()=>props.onClickButton()}>+</button>
+      <button onClick={()=>onClickButton()}>+</button>
     </StyledButton>
   );
 }

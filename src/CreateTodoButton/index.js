@@ -1,11 +1,8 @@
 import React from "react";
 import { CreateTodoButtonUI } from "./CreateTodoButtonUI";
-import { TodoContext } from "../TodoContext";
 
 
-function CreateTodoButton() {
-  const {onClickButton} = React.useContext(TodoContext);
-
+function CreateTodoButton({onClickButton}) {
   return (
     <CreateTodoButtonUI 
     onClickButton={onClickButton}/>

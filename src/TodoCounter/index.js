@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { TodoContext } from "../TodoContext";
 
 const StyledTodoCounter = styled.p`
   text-align: center;
@@ -9,8 +8,7 @@ const StyledTodoCounter = styled.p`
   padding: 1rem;
 `;
 
-function TodoCounter() {
-  const { totalTodos, completedTodos } = React.useContext(TodoContext);
+function TodoCounter({totalTodos, completedTodos}) {
   return (
     <StyledTodoCounter>
       {completedTodos} items left of {totalTodos} items
