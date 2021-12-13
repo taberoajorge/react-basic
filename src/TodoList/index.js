@@ -1,13 +1,25 @@
 import React from "react";
-import "./TodoList.css";
+import styled from "styled-components";
+
+
+
+const StyledUl = styled.ul`
+  overflow: scroll;
+  scroll-behavior: smooth;
+`;
 
 function TodoList(props) {
   return (
-    <section className="section">
-      <ul className="todo-container">{props.children}</ul>
-      <div>
-      {props.todoC}
-      </div>
+    <section>
+      {props.error && props.onError()}
+      {props.loading && props.onLoading()}
+      {(!props.loading && !props.totalTodos) && props.onEmptyTodos()}
+      
+      {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchTodos(props.searchText)}
+
+      {props.searchedTodos.map(props.children || props.render)}
+
+      <StyledUl>{props.children}</StyledUl>
     </section>
   );
 }

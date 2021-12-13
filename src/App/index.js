@@ -1,70 +1,96 @@
 import React from "react";
-import { AppUI } from "./AppUI";
+import { GlobalStyle } from "../GlobalStyle";
+import { useTodos } from "./useTodos";
+import { TodoCounter } from "../TodoCounter";
+import { TodoBar } from "../TodoBar";
+import { TodoFilter } from "../TodoFilter/TodoFilter";
+import { TodoList } from "../TodoList";
+import { TodoItem } from "../TodoItem";
+import { TodoLoadingError } from "../TodoLoadingError/TodoLoadingError";
+import { TodoLoading } from "../TodoLoading/index";
+import { TodoHeader } from "../TodoHeader/TodoHeader";
+import { TodoMain } from "../TodoMain/index";
+import { TodoSection } from "../TodoSection/TodoSection";
+import styled from "styled-components";
 
-const defaultTodos = [
-  {
-    text: "Decirle a gabo que lo quiero mucho alv",
-    completed: true,
-  },
-  {
-    text: "Continuar viendo el curso de react",
-    completed: false,
-  },
-  {
-    text: "Ejercitarme",
-    completed: false,
-  },
-  {
-    text: "Hacer molestar a Monica sin acento",
-    completed: true,
-  },
-];
+
+const StyleTitle = styled.h2`
+  color: #fff;
+  font-size: 3rem;
+`;
 
 function App() {
-  const [todos, setTodos] = React.useState(defaultTodos);
-  const [searchValue, setSearchValue] = React.useState("");
-  const completedTodos = todos.filter((todo) => todo.completed).length;
-  const totalTodos = todos.length;
-
-  let searchedTodos = [];
-  if (!searchValue.length >= 1) {
-    searchedTodos = todos;
-  } else {
-    searchedTodos = todos.filter((todo) => {
-      const todoText = todo.text.toLowerCase();
-      const searchText = searchValue.toLowerCase();
-      return todoText.includes(searchText);
-    });
-  }
-
-  const completeTodo = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
-    const newTodos = [...todos];
-    if (!newTodos[todoIndex].completed) {
-      newTodos[todoIndex].completed = true;
-    } else {
-      newTodos[todoIndex].completed = false;
-    }
-    setTodos(newTodos);
-  };
-
-  const deleteTodo = (text) => {
-    const todoIndex = todos.findIndex((todo) => todo.text === text);
-    const newTodos = [...todos];
-    newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
-  };
+  const {
+    error,
+    loading,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    itemsToLoad,
+    totalTodos,
+    completedTodos,
+    searchValue,
+    setSearchValue,
+    searchMode,
+    setSearchMode,
+  } = useTodos();
 
   return (
-    <AppUI
-      totalTodos={totalTodos}
-      completedTodos={completedTodos}
-      searchValue={searchValue}
-      setSearchValue={setSearchValue}
-      searchedTodos={searchedTodos}
-      completeTodo={completeTodo}
-      deleteTodo={deleteTodo}
-    />
+    <React.Fragment>
+      <GlobalStyle />
+
+      <TodoHeader loading={loading}>
+        <StyleTitle> TODO </StyleTitle>
+      </TodoHeader>
+
+      <TodoMain loading={loading}>
+        <TodoBar
+          searchMode={searchMode}
+          setSearchMode={setSearchMode}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+        <TodoSection>
+          <TodoList
+            error={error}
+            loading={loading}
+            searchedTodos={searchedTodos}
+            totalTodos={totalTodos}
+            searchText={searchValue}
+            onError={() => <TodoLoadingError />}
+            onLoading={() => <TodoLoading itemsToLoad={itemsToLoad} />}
+            onEmptyTodos={() => <StyleTitle> Crea tu primer todo</StyleTitle>}
+            onEmptySearchTodos={(searchText) => (
+              <StyleTitle> No hay resultados para {searchText}</StyleTitle>
+            )}
+            // render={(todo) => (
+            //   <TodoItem
+            //     key={todo.text}
+            //     text={todo.text}
+            //     completed={todo.completed}
+            //     onComplete={() => completeTodo(todo.text)}
+            //     onDelete={() => deleteTodo(todo.text)}
+            //   />
+            // )}
+          >
+            {(todo) => (
+              <TodoItem
+                key={todo.text}
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={() => completeTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
+              />
+            )}
+          </TodoList>
+          <TodoCounter
+            totalTodos={totalTodos}
+            completedTodos={completedTodos}
+          />
+        </TodoSection>
+        <TodoFilter />
+      </TodoMain>
+    </React.Fragment>
   );
 }
 
