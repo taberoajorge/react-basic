@@ -80,7 +80,7 @@ function TodoBarUI({
   };
 
   return (
-    <React.Fragment>
+    <section>
       <StyledForm onSubmit={onCreateTodo}>
         <StyledSearchInput
           onChange={onSearchValueChange}
@@ -102,7 +102,7 @@ function TodoBarUI({
       <button type={searchMode ? "submit" : "button"} onClick={onClickButton}>
         {!searchMode ? "Search" : "Create"}
       </button>
-    </React.Fragment>
+    </section>
   );
 }
 

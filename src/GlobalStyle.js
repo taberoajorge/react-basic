@@ -24,10 +24,6 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     background-color: var(--main-color);
-  }
-  
-  main {
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
