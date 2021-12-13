@@ -6,11 +6,8 @@ const StyledCircle = styled.div`
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
-<<<<<<< HEAD
   background: var(--border-color);
 
-=======
->>>>>>> main
 `;
 
 const StyledText = styled.div`
@@ -18,10 +15,7 @@ const StyledText = styled.div`
   width: 80%;
   height: 1rem;
   border-radius: 0.5rem;
-<<<<<<< HEAD
   background: var(--border-color);
-=======
->>>>>>> main
 `;
 
 const StyledContainer = styled.div`
