@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-
 const StyledMain = styled.main`
   list-style: none;
   border-radius: 0.5rem;
@@ -12,13 +11,14 @@ const StyledMain = styled.main`
   justify-content: space-between;
 `;
 
-function TodoMain({children}) {
-    return(
-        <StyledMain>
-            {children}
-        </StyledMain>
-    );
-    
+function TodoMain({ children, loading }) {
+  return (
+    <StyledMain>
+      {React.Children.toArray(children).map((child) =>
+        React.cloneElement(child, {loading:loading})
+      )}
+    </StyledMain>
+  );
 }
 
-export {TodoMain};
+export { TodoMain };

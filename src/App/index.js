@@ -40,31 +40,30 @@ function App() {
     <React.Fragment>
       <GlobalStyle />
       
-      <TodoHeader>
+      <TodoHeader loading={loading}>
         <StyleTitle> TODO </StyleTitle>
         <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       </TodoHeader>
 
-      <TodoMain>
-        <TodoList>
-          {error && <TodoLoadingError />}
-
-          {loading && <TodoLoading itemsToLoad={itemsToLoad} />}
-
-          {!loading && !searchedTodos.length && (
-            <StyleTitle> Crea tu primer todo</StyleTitle>
-          )}
-
-          {searchedTodos.map((todo) => (
-            <TodoItem
-              key={todo.text}
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}
-            />
-          ))}
-        </TodoList>
+      <TodoMain loading={loading}>
+        <TodoList
+        searchText={searchValue}
+        searchedTodos={searchedTodos}
+        totalTodos={totalTodos}
+        error={error}
+        onError={()=><TodoLoadingError />}
+        onLoading={()=><TodoLoading itemsToLoad={itemsToLoad}/>}
+        onEmpty={()=><StyleTitle> Crea tu primer todo</StyleTitle>}
+        render={(todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        )}
+        />
         <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
       </TodoMain>
 

@@ -10,7 +10,7 @@ const StyledInput = styled.input`
   border-radius: 0.5rem;
   margin-bottom: 0.5rem;
   color: var(--text-color);
-  font-size: 1.8rem;
+  font-size: 1.8rem; 
   
   &::placeholder {
     color: var(--border-color);
@@ -18,9 +18,12 @@ const StyledInput = styled.input`
   &:focus-visible {
     outline: none;
   }
+  &:disabled {
+    opacity: 25%;
+  }
 `;
 
-export function TodoSearchUI({ searchValue, onSearchValueChange }) {
+export function TodoSearchUI({ searchValue, onSearchValueChange, loading}) {
   return (
     <React.Fragment>
       <StyledInput
@@ -28,6 +31,8 @@ export function TodoSearchUI({ searchValue, onSearchValueChange }) {
         className="search-bar"
         placeholder="Encuentra tu tarea"
         value={searchValue}
+        disabled={loading}
+
       />
     </React.Fragment>
   );

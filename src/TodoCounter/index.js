@@ -6,11 +6,12 @@ const StyledTodoCounter = styled.p`
   font-size: 1.8rem;
   color: aliceblue;
   padding: 1rem;
+  opacity: ${(props)=> props.loading ? '25%': ''};
 `;
 
-function TodoCounter({totalTodos, completedTodos}) {
+function TodoCounter({totalTodos, completedTodos, loading}) {
   return (
-    <StyledTodoCounter>
+    <StyledTodoCounter loading={loading}>
       {completedTodos} items left of {totalTodos} items
     </StyledTodoCounter>
   );

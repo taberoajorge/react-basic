@@ -1,7 +1,7 @@
 import React from "react";
 import { TodoSearchUI } from "./TodoSearchUI";
 
-function TodoSearch({searchValue, setSearchValue}) {
+function TodoSearch({searchValue, setSearchValue, loading}) {
 
   const onSearchValueChange = (event) => {
     console.log(event.target.value);
@@ -10,6 +10,7 @@ function TodoSearch({searchValue, setSearchValue}) {
 
   return (
     <TodoSearchUI
+      loading={loading}
       searchValue={searchValue}
       onSearchValueChange={onSearchValueChange}
     />
