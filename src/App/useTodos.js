@@ -5,6 +5,7 @@ function useTodos() {
   const {
     item: todos,
     saveItem: saveTodos,
+    sincronize,
     loading,
     error,
     itemsToLoad,
@@ -41,7 +42,7 @@ function useTodos() {
     saveTodos(newTodos);
   };
   const createTodo = (text) => {
-    console.log(text);
+    // console.log(text);
     const newTodo = [{ text: text, completed: false }];
     const newTodos = [...todos, ...newTodo];
     saveTodos(newTodos);
@@ -66,6 +67,7 @@ function useTodos() {
     onClickButton,
     createTodo,
     itemsToLoad,
+    sincronize,
   };
 }
 

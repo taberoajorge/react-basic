@@ -13,6 +13,8 @@ import { TodoLoadingError } from "../TodoLoadingError/index";
 import { TodoLoading } from "../TodoLoading/index";
 import { TodoHeader } from "../TodoHeader/TodoHeader";
 import { TodoMain } from "../TodoMain/index";
+import { ChangeAlert } from "../ChangeAlert/index";
+
 
 const StyleTitle = styled.h2`
   color: #fff;
@@ -34,6 +36,7 @@ function App() {
     setSearchValue,
     onClickButton,
     createTodo,
+    sincronize,
   } = useTodos();
 
   return (
@@ -74,6 +77,8 @@ function App() {
       )}
 
       <CreateTodoButton  onClickButton={onClickButton}/>
+
+      <ChangeAlert syncNow={sincronize}/>
     </React.Fragment>
   );
 }
