@@ -5,10 +5,10 @@ import styled from "styled-components";
 const StyledMain = styled.main`
 `;
 
-function TodoMain({children}) {
+function TodoMain({children, loading}) {
     return(
         <StyledMain>
-            {children}
+            {React.Children.toArray(children).map((child)=> React.cloneElement(child, {loading: loading}))}
         </StyledMain>
     );
     

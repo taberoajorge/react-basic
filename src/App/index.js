@@ -14,6 +14,7 @@ import { TodoSection } from "../TodoSection/TodoSection";
 import styled from "styled-components";
 import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
+import { TodoLoadingEmpty } from "../TodoLoadingEmpty";
 
 const StyleTitle = styled.h2`
   color: #fff;
@@ -43,6 +44,7 @@ function App() {
     toggleModal,
   } = useTodos();
 
+
   return (
     <React.Fragment>
       <GlobalStyle />
@@ -60,16 +62,16 @@ function App() {
           onClickButton={onClickButton}
           setValue={setValue}
         />
+
         <TodoSection>
           <TodoList
             error={error}
-            loading={loading}
             searchedTodos={searchedTodos}
             totalTodos={totalTodos}
             searchText={searchValue}
             onError={() => <TodoLoadingError />}
             onLoading={() => <TodoLoading itemsToLoad={itemsToLoad} />}
-            onEmptyTodos={() => <p> Crea tu primer todo</p>}
+            onEmptyTodos={() => <TodoLoadingEmpty/>}
             onEmptySearchTodos={(searchText) => (
               <p> No hay resultados para {searchText}</p>
             )}

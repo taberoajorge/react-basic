@@ -52,7 +52,7 @@ function TodoFormUI({ onClickButton, createTodo, value }) {
 
   return (
     <StyledForm onSubmit={onCreateTodo}>
-      <StyledLabel  for="todo">
+      <StyledLabel htmlFor="todo">
         <span>Estas seguro de crear esta tarea?</span>
         <StyledInput
           type="text"

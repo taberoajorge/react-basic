@@ -9,15 +9,19 @@ const StyledUl = styled.ul`
 `;
 
 function TodoList(props) {
+  console.log(props.loading);
   return (
     <StyledUl>
       {props.error && props.onError()}
+
       {props.loading && props.onLoading()}
+
+
       {(!props.loading && !props.totalTodos) && props.onEmptyTodos()}
       
       {(!!props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchTodos(props.searchText)}
 
-      {props.searchedTodos.map(props.children || props.render)}
+      {(!props.error && !props.loading) && props.searchedTodos.map(props.children || props.render)}
 
      {props.children}
     </StyledUl>

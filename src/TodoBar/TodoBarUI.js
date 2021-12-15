@@ -93,6 +93,7 @@ function TodoBarUI({
           searchMode={searchMode}
         />
         <StyledCreateInput
+        autoComplete="off"
           id="createTodoInput"
           placeholder="CREATE MODE: type your todo..."
           disabled={onDisabled}

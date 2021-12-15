@@ -28,8 +28,8 @@ const StyledContainer = styled.div`
 function TodoLoading({ itemsToLoad }) {
   return (
     <>
-      {itemsToLoad.map(() => (
-        <StyledContainer>
+      {itemsToLoad.map((todo) => (
+        <StyledContainer key={todo.text} >
           <StyledCircle />
           <StyledText />
           <StyledCircle />
