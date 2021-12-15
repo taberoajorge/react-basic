@@ -5,10 +5,9 @@ const StyledSearchInput = styled.input`
   width: 100%;
   background-color: var(--todo-color);
   border: none;
-  height: 4rem;
+  height: var(--bar-size);
   padding: 1rem;
   border-radius: 0.5rem;
-  margin-bottom: 0.5rem;
   color: var(--text-color);
   font-size: 1.8rem;
   display: ${(props) => (props.searchMode ? "block" : "none")};
@@ -27,10 +26,9 @@ const StyledCreateInput = styled.input`
   width: 100%;
   background-color: var(--todo-color);
   border: none;
-  height: 4rem;
+  height: var(--bar-size);
   padding: 1rem;
   border-radius: 0.5rem;
-  margin-bottom: 0.5rem;
   color: var(--text-color);
   font-size: 1.8rem;
   display: ${(props) => (props.searchMode ? "none" : "block")};
@@ -56,54 +54,61 @@ const StyledForm = styled.form`
     border: none;
     background: transparent;
     position: absolute;
-    right: 0;
+    right: 1rem;
     top: 1rem;
     color: var(--text-color);
   }
 `;
-
 function TodoBarUI({
   searchValue,
   onSearchValueChange,
   onDisabled,
   setSearchMode,
   searchMode,
-  createTodo,
+  onCreate,
+  setValue,
 }) {
   const onCreateTodo = (event) => {
-    event.preventDefault();
-    createTodo(event.currentTarget.elements.createTodoInput.value);
+    if (event.charCode === 13) {
+      onCreate()
+      event.target.value = '';
+    }
+  };
+  
+  const onEnter = (event) => {
+    setValue(event.target.value)
   };
   const onClickButton = () => {
     setSearchMode((prevState) => !prevState);
-    // console.log(searchMode);
   };
 
   return (
     <section>
-      <StyledForm onSubmit={onCreateTodo}>
+      <StyledForm>
         <StyledSearchInput
           onChange={onSearchValueChange}
-          placeholder="Search your todo..."
+          placeholder="SEARCH MODE: Search your todo..."
           value={searchValue}
           disabled={onDisabled}
           searchMode={searchMode}
         />
         <StyledCreateInput
           id="createTodoInput"
-          placeholder="Create a new todo..."
+          placeholder="CREATE MODE: type your todo..."
           disabled={onDisabled}
           searchMode={searchMode}
+          onKeyPress={onCreateTodo}
+          onChange={onEnter}
         />
-        <button type={searchMode ? "submit" : "button"} onClick={onClickButton}>
-        {!searchMode ? "Search" : "Create"}
-      </button>
+        <button type="button" onClick={onClickButton}>
+          {!searchMode 
+          ? <img src="https://img.icons8.com/material-outlined/24/ffffff/search--v1.png" alt="edit"/> 
+          : <img src="https://img.icons8.com/material-outlined/24/ffffff/create.png" alt="create" />}
+        </button>
       </StyledForm>
-      <button type={searchMode ? "submit" : "button"} onClick={onClickButton}>
-        {!searchMode ? "Search" : "Create"}
-      </button>
     </section>
   );
 }
 
 export { TodoBarUI };
+

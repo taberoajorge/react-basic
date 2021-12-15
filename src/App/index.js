@@ -12,14 +12,17 @@ import { TodoHeader } from "../TodoHeader/TodoHeader";
 import { TodoMain } from "../TodoMain/index";
 import { TodoSection } from "../TodoSection/TodoSection";
 import styled from "styled-components";
-
+import { Modal } from "../Modal";
+import { TodoForm } from "../TodoForm";
 
 const StyleTitle = styled.h2`
   color: #fff;
   font-size: 3rem;
+  letter-spacing: 1rem;
 `;
 
 function App() {
+  
   const {
     error,
     loading,
@@ -33,6 +36,11 @@ function App() {
     setSearchValue,
     searchMode,
     setSearchMode,
+    createTodo,
+    setValue,
+    value,
+    onClickButton,
+    toggleModal,
   } = useTodos();
 
   return (
@@ -49,6 +57,8 @@ function App() {
           setSearchMode={setSearchMode}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
+          onClickButton={onClickButton}
+          setValue={setValue}
         />
         <TodoSection>
           <TodoList
@@ -59,21 +69,11 @@ function App() {
             searchText={searchValue}
             onError={() => <TodoLoadingError />}
             onLoading={() => <TodoLoading itemsToLoad={itemsToLoad} />}
-            onEmptyTodos={() => <StyleTitle> Crea tu primer todo</StyleTitle>}
+            onEmptyTodos={() => <p> Crea tu primer todo</p>}
             onEmptySearchTodos={(searchText) => (
-              <StyleTitle> No hay resultados para {searchText}</StyleTitle>
+              <p> No hay resultados para {searchText}</p>
             )}
-            // render={(todo) => (
-            //   <TodoItem
-            //     key={todo.text}
-            //     text={todo.text}
-            //     completed={todo.completed}
-            //     onComplete={() => completeTodo(todo.text)}
-            //     onDelete={() => deleteTodo(todo.text)}
-            //   />
-            // )}
-          >
-            {(todo) => (
+            render={(todo) => (
               <TodoItem
                 key={todo.text}
                 text={todo.text}
@@ -82,7 +82,8 @@ function App() {
                 onDelete={() => deleteTodo(todo.text)}
               />
             )}
-          </TodoList>
+          />
+
           <TodoCounter
             totalTodos={totalTodos}
             completedTodos={completedTodos}
@@ -90,6 +91,17 @@ function App() {
         </TodoSection>
         <TodoFilter />
       </TodoMain>
+     
+      {!!toggleModal && (  
+      <Modal> 
+        <TodoForm 
+        createTodo={createTodo}
+        value={value}
+        onClickButton={onClickButton} 
+        searchValue={searchValue}/> 
+      </Modal>)} 
+     
+   
     </React.Fragment>
   );
 }

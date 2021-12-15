@@ -2,6 +2,7 @@ import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
 function useTodos() {
+  
   const {
     item: todos,
     saveItem: saveTodos,
@@ -9,10 +10,14 @@ function useTodos() {
     error,
     itemsToLoad,
   } = useLocalStorage("TODOS_V1", []);
+  const [toggleModal, setToggleModal] = React.useState(false);
+  const [value, setValue] = React.useState('');
+  const [searchMode, setSearchMode] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
   const completedTodos = todos.filter((todo) => todo.completed).length;
   const totalTodos = todos.length;
   let searchedTodos = [];
+
   if (!searchValue.length >= 1) {
     searchedTodos = todos;
   } else {
@@ -22,6 +27,7 @@ function useTodos() {
       return todoText.includes(searchText);
     });
   }
+
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
@@ -32,19 +38,22 @@ function useTodos() {
     }
     saveTodos(newTodos);
   };
+
   const deleteTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   };
-  const [searchMode, setSearchMode] = React.useState(false);
- 
+  const onClickButton = () => {
+    setToggleModal(prevState=> !prevState)
+  };
+  
   const createTodo = (text) => {
-    console.log(text);
     const newTodo = [{ text: text, completed: false }];
     const newTodos = [...todos, ...newTodo];
     saveTodos(newTodos);
+    onClickButton();
   };
 
   return {
@@ -61,6 +70,10 @@ function useTodos() {
     itemsToLoad,
     searchMode,
     setSearchMode,
+    setValue,
+    value,
+    onClickButton,
+    toggleModal,
   };
 }
 

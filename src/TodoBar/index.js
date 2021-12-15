@@ -7,21 +7,22 @@ function TodoBar({
   loading,
   setSearchMode,
   searchMode,
-  createTodo
+  onClickButton,
+  setValue,
 }) {
   const onSearchValueChange = (event) => {
-    console.log(event.target.value);
     setSearchValue(event.target.value);
   };
 
   return (
     <TodoBarUI
+      setValue={setValue}
       searchValue={searchValue}
       onSearchValueChange={onSearchValueChange}
       onDisabled={loading}
       setSearchMode={setSearchMode}
       searchMode={searchMode}
-      createTodo={createTodo}
+      onCreate={onClickButton}
     />
   );
 }

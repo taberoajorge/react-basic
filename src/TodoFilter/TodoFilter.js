@@ -2,26 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledDiv = styled.section`
-  position: relative;
-  bottom: -2rem;
-  width: 27rem;
+  margin-top: 1rem;
+  width: 100%;
   background-color: var(--todo-color);
-  border: none;
-  height: 4rem;
-  padding: 1rem;
+  height: var(--bar-size);
   border-radius: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.8rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
 
-  /* /* &::placeholder {
-    color: var(--border-color);
-  }
-  */
-
   & > button {
+    font-weight: 700;
     background: transparent;
     border: none;
     color: var(--border-color);

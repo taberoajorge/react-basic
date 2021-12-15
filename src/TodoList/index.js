@@ -10,7 +10,7 @@ const StyledUl = styled.ul`
 
 function TodoList(props) {
   return (
-    <section>
+    <StyledUl>
       {props.error && props.onError()}
       {props.loading && props.onLoading()}
       {(!props.loading && !props.totalTodos) && props.onEmptyTodos()}
@@ -19,8 +19,8 @@ function TodoList(props) {
 
       {props.searchedTodos.map(props.children || props.render)}
 
-      <StyledUl>{props.children}</StyledUl>
-    </section>
+     {props.children}
+    </StyledUl>
   );
 }
 export { TodoList };

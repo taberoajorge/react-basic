@@ -16,7 +16,7 @@ border: none;
 background: transparent;
 color: var(--border-color);
 font-size: 1.6rem;
-
+font-family: "Josefin Sans";
 
 
 `;

@@ -4,51 +4,37 @@ export const GlobalStyle = createGlobalStyle`
 :root {
     --title: 700;
     --text-weigth: 400;
-    --main-color: hsl(235, 21%, 11%);
+    --main-color: #181824;
     --text-color: hsl(236, 33%, 92%);
-    --todo-color: hsl(237, 14%, 26%);
+    --todo-color: #25273C;
     --border-color: hsl(234, 11%, 52%);
     --button-color: hsl(192, 100%, 67%);
     --check: hsl(280, 87%, 65%);
+    --bar-size: 4.5rem;
   }
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Josefin Sans", sans-serif;
   }
   
   html {
     font-size: 62.5%;
-    font-family: "Josefin Sans", sans-serif;
   }
   
   body {
     background-color: var(--main-color);
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 90vh;
-    width: 50vw;
-    margin: auto;
-    background-image: url(./bg-mobile-dark.jpg);
-    background-position: top;
-     background-repeat: no-repeat;
-    background-size: 100vw;
+    align-items:center;
      }
-    header {
-      position: relative;
-      top: -1rem;
-      height: 6rem;
-      width: 100%;
-    }
-  main{
-    width: 100%;
+
+  #root{
+    width: 31rem;
   }
-  @media (min-width: 600px) {
-   body {
-     background-image: url("./bg-desktop-dark.jpg");
-   }
 `;
 
 // # Front-end Style Guide
@@ -80,6 +66,7 @@ export const GlobalStyle = createGlobalStyle`
 // ### Dark Theme
 
 // - Very Dark Blue: hsl(235, 21%, 11%)
+
 // - Very Dark Desaturated Blue: hsl(235, 24%, 19%)
 // - Light Grayish Blue: hsl(234, 39%, 85%)
 // - Light Grayish Blue (hover): hsl(236, 33%, 92%)

@@ -2,9 +2,9 @@ import React from "react";
 import {TodoFormUI} from "../TodoForm/TodoFormUI";
 
 
-function TodoForm({onClickButton, createTodo}) {
+function TodoForm({onClickButton, createTodo, value}) {
     return (
-        <TodoFormUI createTodo={createTodo} onClickButton={onClickButton} />
+        <TodoFormUI value={value} createTodo={createTodo} onClickButton={onClickButton} />
     );
 }
 

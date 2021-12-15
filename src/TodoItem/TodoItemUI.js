@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyleTodoItem = styled.li`
+  height: var(--bar-size);
   padding: 1.2rem;
   display: flex;
   border-bottom: 1px solid var(--border-color);

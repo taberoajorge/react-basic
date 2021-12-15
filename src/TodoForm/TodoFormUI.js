@@ -44,7 +44,7 @@ const StyledButton = styled.button`
 
 
 
-function TodoFormUI({ onClickButton, createTodo }) {
+function TodoFormUI({ onClickButton, createTodo, value }) {
   const onCreateTodo = (event) => {
     event.preventDefault()
     createTodo(event.currentTarget.elements.todo.value)
@@ -53,11 +53,11 @@ function TodoFormUI({ onClickButton, createTodo }) {
   return (
     <StyledForm onSubmit={onCreateTodo}>
       <StyledLabel  for="todo">
-        <span>Escribe una nueva tarea</span>
+        <span>Estas seguro de crear esta tarea?</span>
         <StyledInput
-          placeholder="Crea una nueva tarea!"
           type="text"
           id="todo"
+          defaultValue={value}
         />
         
         <StyledButton onClick={() => onClickButton()} type="button">
