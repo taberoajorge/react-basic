@@ -20,6 +20,11 @@ const StyleTitle = styled.h2`
   color: #fff;
   font-size: 3rem;
   letter-spacing: 1rem;
+  @media (min-width: 600px){
+    & {
+      font-size: 5rem;
+    }
+  }
 `;
 
 function App() {

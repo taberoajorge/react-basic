@@ -35,6 +35,15 @@ export const GlobalStyle = createGlobalStyle`
   #root{
     width: 31rem;
   }
+
+  @media (min-width: 600px){
+    :root {
+      --bar-size: 6.5rem;
+    }
+    #root{
+      width: 50rem;
+    }
+  }
 `;
 
 // # Front-end Style Guide
